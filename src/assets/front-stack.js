@@ -49,9 +49,7 @@
         var next_key = key_arr.shift();
 
         if (!data.hasOwnProperty(next_key)) {
-            return (typeof default_value !== 'undefined')
-                ? default_value
-                : null;
+            return default_value;
         }
 
         return recursive_get(data[next_key], key_arr.join('.'), default_value);
@@ -72,13 +70,11 @@
          */
         this.get = function (name, default_value) {
             var value = recursive_get(this.all(), name, default_value);
-            if (value) {
+            if (typeof value !== 'undefined') {
                 return value;
             }
 
-            return (typeof default_value !== 'undefined')
-                ? default_value
-                : null;
+            return default_value;
         };
 
         /**
@@ -88,8 +84,9 @@
          * @returns {boolean}
          */
         this.has = function (name) {
-            var value = recursive_get(this.all(), name, default_value);
-            if (value) {
+            var value = recursive_get(this.all(), name);
+
+            if (typeof value !== 'undefined') {
                 return true;
             }
 
