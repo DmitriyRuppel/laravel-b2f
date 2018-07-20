@@ -2,20 +2,17 @@
 
 namespace AvtoDev\BackendToFrontendVariablesStack\Tests;
 
-use DateTime;
-use Tarampampam\Wrappers\Json;
-use AvtoDev\BackendToFrontendVariablesStack\Service\BackendToFrontendVariablesStack;
 use AvtoDev\BackendToFrontendVariablesStack\Contracts\BackendToFrontendVariablesInterface;
 
 /**
- * Тест хэлперов к сервису передачи данных от бэка фронту.
+ * Helper test to the data transfer service from the back to the front.
  *
  * @group back-to-front
  */
 class HelpersTest extends AbstractTestCase
 {
     /**
-     * Проверка типа объекта возвращаемого хэлпером.
+     * Check the type of object returned by the helper.
      */
     public function testBackToFrontStack()
     {

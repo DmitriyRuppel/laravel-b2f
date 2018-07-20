@@ -52,11 +52,11 @@ abstract class AbstractTestsBootstrapper
 
         $this->files = $this->app->make('files');
 
-        // Перебираем все имена методов собственного класса
+        // Rebuild names of methods of its own class
         foreach (get_class_methods(static::class) as $method_name) {
-            // Если метод начинается с подстроки 'boot'
+            // Еf method begins from substring 'boot'
             if (Str::startsWith($method_name, static::MAGIC_METHODS_PREFIX)) {
-                // То вызываем метод, передавая ему на вход массив коллекций (хотя передавать не обязательно)
+                // Then call the method by passing an array of collections to it (although it is not necessary to pass it)
                 if (call_user_func_array([$this, $method_name], []) !== true) {
                     throw new Exception(sprintf(
                         'Bootstrap method "%s" has non-true result. So, we cannot start tests for this reason',

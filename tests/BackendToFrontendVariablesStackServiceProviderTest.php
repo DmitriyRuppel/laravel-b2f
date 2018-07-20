@@ -17,7 +17,7 @@ class BackendToFrontendVariablesStackServiceProviderTest extends AbstractTestCas
     protected $config_key = 'back2front';
 
     /**
-     * Проверка существования и корректности значений конфигурации.
+     * Check config.
      */
     public function testConfigExists()
     {

@@ -1,17 +1,17 @@
 <?php
 
 /*
- * Настройки пакета передачи данных от бэка фронту.
+ * Packet data transfer settings from back to front.
  */
 
 return [
     /**
-     * Максимальная глубина рекурсии при преобразовании данных в массивы
+     * Maximum depth of recursion when converting data to arrays
      */
     'max_recursion_depth' => 3,
 
     /**
-     * Формат даты в который будут преобразованы объекты типа DateTime.
+     * Date format DateTime object conversion
      */
     'date_foramat' => 'Y-m-d H:i:s',
 ];

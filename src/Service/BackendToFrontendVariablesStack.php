@@ -12,17 +12,17 @@ use AvtoDev\BackendToFrontendVariablesStack\Contracts\BackendToFrontendVariables
 /**
  * Class BackendToFrontendVariablesStack.
  *
- * Класс для передачи данных с бэка фронту в виде Json.
+ * Service class for sending data from back to front Json.
  */
 class BackendToFrontendVariablesStack extends Collection implements BackendToFrontendVariablesInterface
 {
     /**
-     * @var string Формат даты, в который будет преобразован DateTime.
+     * @var string Date format DateTime object conversion.
      */
     protected $date_format;
 
     /**
-     * @var int Максимальная глубина рекурсивного обхода данных при преобразовании к скалярам
+     * @var int Maximum depth of recursive data traversal when converting to scalars
      */
     protected $max_recursion_depth;
 
@@ -56,8 +56,8 @@ class BackendToFrontendVariablesStack extends Collection implements BackendToFro
     }
 
     /**
-     * Выполняет рекурсивный обход данных до максимально установленного уровня вложенности и преобразует значения в
-     * массивы + форматирует дату.
+     * Performs a recursive data traversal to the maximum specified level of nesting and converts the values to
+     * Arrays + formats the date.
      *
      * @param array|Traversable $data      Данные
      * @param int               $depth     Текущая глубина обхода
@@ -68,7 +68,7 @@ class BackendToFrontendVariablesStack extends Collection implements BackendToFro
     protected function formatDataRecursive($data, $depth = 0, $max_depth = 3)
     {
         $map_closure = function ($value) use ($depth, $max_depth) {
-            // Преобразуем к массиву если можем
+            // Convert to array if available
             if ($value instanceof Arrayable) {
                 $value = $value->toArray();
             }
@@ -87,7 +87,7 @@ class BackendToFrontendVariablesStack extends Collection implements BackendToFro
     }
 
     /**
-     * Пересобирает массив только с простыми типами данных и массивами.
+     * Recompiles the array only with simple data types and arrays.
      *
      * @param array $data
      */

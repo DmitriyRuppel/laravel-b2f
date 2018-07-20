@@ -7,7 +7,7 @@ use AvtoDev\BackendToFrontendVariablesStack\Contracts\BackendToFrontendVariables
 use AvtoDev\BackendToFrontendVariablesStack\Service\BackendToFrontendVariablesStack;
 
 /**
- * Регистрация сервиса передачи данных от бэка фронту.
+ * Service registration.
  */
 class BackendToFrontendVariablesStackServiceProvider extends ServiceProvider
 {

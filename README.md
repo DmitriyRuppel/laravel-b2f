@@ -86,7 +86,7 @@ BackendToFrontendVariablesStack object provides the following public methods:
 | Method | Description  |
 |---|---|
 | put($key, $value) | Set variable in stack. Parameter "key" must be a string.  |
-| get($key): mixed         |  Get value by key. |
+| get($key, \[default\]): mixed         |  Get value by key. |
 | has($key): bool         | Check that key exists in storage.  |
 | forget($key)      | Remove item from storage.  |
 | toArray(): array  | Return data in array. |
@@ -117,13 +117,14 @@ Use it you may adding js file at page:
 <script src="/vendor/back2front/front-stack.js" type="text/javascript"></script>
 ```
 
-or use it as require.js dependency.
+
+> **You also can use it as require.js dependency.**
 
 This creates window.frontStack object which provides following methods:
 
 | Method | Description  |
 |---|---|
-| get(key)         |  Get value by key. Supports "dot" notation for access to items if in data contains multidimensional arrays.  |
+| get(key, \[default\])         |  Get value by key. Supports "dot" notation for access to items if in data contains multidimensional arrays.  Returns `undefined` if item don't exists or default value if it set |
 | has(key): bool         | Check that key exists in storage.  |
 | all(): object         | Returns data object.  |
 
@@ -154,6 +155,12 @@ $ git clone git@github.com:avto-dev/back2front-laravel.git ./back2front-laravel 
 $ composer install
 $ composer test
 ```
+
+##### JS testing
+
+For testing JavaScript code using `QUnit` framework.
+
+Open the file `"js-tests/index.php"` in your browser and see tests result.
 
 ## Changes log
 

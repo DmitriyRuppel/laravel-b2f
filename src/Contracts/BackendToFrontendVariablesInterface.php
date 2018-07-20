@@ -8,12 +8,12 @@ use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Contracts\Support\Arrayable;
 
 /**
- * Интерфейс объекта для обмена данными между бэкэндом и фронтендом.
+ * The interface of the object for data exchange between the backend and the frontend.
  */
 interface BackendToFrontendVariablesInterface extends Arrayable, Jsonable, Traversable, Countable
 {
     /**
-     * Добавить элемент для передачи фронту.
+     * Add an element to send to the front.
      *
      * @param string $key
      * @param mixed  $value
@@ -42,7 +42,7 @@ interface BackendToFrontendVariablesInterface extends Arrayable, Jsonable, Trave
     public function get($key, $default = null);
 
     /**
-     * Проверка, что есть данные по заданному ключу.
+     * Check that there is data for a given key.
      *
      * @param string $key
      *

@@ -8,7 +8,7 @@ use AvtoDev\BackendToFrontendVariablesStack\Service\BackendToFrontendVariablesSt
 use AvtoDev\BackendToFrontendVariablesStack\Contracts\BackendToFrontendVariablesInterface;
 
 /**
- * Тест сервиса для передачи данных с бэка фронту.
+ * Test service for transferring data from the back to the front.
  *
  * @coversDefaultClass \AvtoDev\BackendToFrontendVariablesStack\Service\BackendToFrontendVariablesStack
  *
@@ -32,7 +32,7 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
     }
 
     /**
-     * Метод toArray. Массив глубокой вложенности.
+     * The toArray method. An array of deep nesting.
      *
      * @covers ::toScalarsRecursive
      * @covers ::toArray
@@ -53,7 +53,7 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
     }
 
     /**
-     * Метод toArray. Объект, который нельзя преобразовать в масив.
+     * The toArray method. An object that can not be converted to an array.
      *
      * @covers ::clearNoScalarsFromArrayRecursive
      * @covers ::toArray
@@ -68,7 +68,7 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
     }
 
     /**
-     * Метод toArray. Форматирование даты и времени.
+     * The toArray method. Format the date and time.
      *
      * @covers ::toScalarsRecursive
      * @covers ::toArray
@@ -87,7 +87,7 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
     }
 
     /**
-     * Метод toArray. Массив глубокой вложенности. Объект, который нельзя преобразовать в масив.
+     * The toArray method. An array of deep nesting. An object that can not be converted to an array.
      *
      * @covers ::toArray
      * @covers ::toScalarsRecursive
@@ -109,7 +109,7 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
     }
 
     /**
-     * Добавление данных в стэк и вывод в json.
+     * Adding data to the stack and output to json.
      *
      * @covers ::put
      * @covers ::get
@@ -132,14 +132,14 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
 
         $parsed_data = Json::decode($this->service->toJson(), true);
 
-        // Проверка, что массив полученный через toArray содержит те же данные, что вернулись в toJson
+        // Verifying that the array received through toArray contains the same data that was returned to toJson
         $this->assertEquals($in_array, $parsed_data);
 
         foreach ($test_data as $key => $value) {
-            // Получение сырых данных
+            // Getting raw data
             $this->assertEquals($value, $this->service->get($key));
 
-            // Проверка данных после преобразования в JSON
+            // Checking data after conversion to JSON
             if (is_scalar($value)) {
                 $this->assertEquals($value, $parsed_data[$key]);
             } else {
@@ -149,7 +149,7 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
     }
 
     /**
-     * Проверка метода has.
+     * Checking the has method.
      *
      * @covers ::has
      */
@@ -164,7 +164,7 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
     }
 
     /**
-     * Проверка метода forget.
+     * Checking the forget method.
      *
      * @covers ::forget
      */
