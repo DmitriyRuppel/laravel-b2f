@@ -160,7 +160,7 @@ $ composer test
 
 For testing JavaScript code using `QUnit` framework.
 
-Open the file `"js-tests/index.php"` in your browser and see tests result.
+Open the file `"js-tests/index.html"` in your browser and see tests result.
 
 ## Changes log
 
