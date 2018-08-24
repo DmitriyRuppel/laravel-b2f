@@ -100,16 +100,26 @@ For output data at frontend you should add following code in your blade-template
 
 ```html
 <script type="text/javascript">
-    Object.defineProperty(window, 'backend', {
+    Object.defineProperty(window, 'DATA_PROPERTY_NAME', {
         writable: false,
         value: {!! backToFrontStack()->toJson() !!}
     });
 </script>
 ```
 
-It creates property "backend" for superglobal object "window" with early added data.
+OR by blade-directive
 
-Package contains javaScript helper for access to data object.
+```html
+@back_to_front_data('DATA_PROPERTY_NAME')
+```
+
+It creates property with name equals "DATA_PROPERTY_NAME" for superglobal object "window" with early added data.
+
+Default value of DATA_PROPERTY_NAME is 'backend'. If you use custom value and want to use front-stack helper on frontend, than you need call ```window.frontStack.setStackName('custom_name');```
+before helper usage.
+
+
+**Package contains javaScript helper for access to data object.**
 
 Use it you may adding js file at page:
 
