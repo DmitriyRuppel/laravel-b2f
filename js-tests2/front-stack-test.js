@@ -1,6 +1,11 @@
 /**
  * Tests for front-stack.js functional.
  */
+var window = { document: {} };
+
+var test_module = require('../src/assets/front-stack.js');
+
+window.frontStack = test_module(window);
 
 /**
  * Test init object for work with backend data.
