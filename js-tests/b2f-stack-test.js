@@ -52,9 +52,50 @@ describe("Initialization init", function () {
 
 });
 
+describe("Set custom stack name", function () {
+
+    /**
+     * Test getiing data of does not exists stack variable.
+     */
+    it('No data', function () {
+        var custom_stack_name = 'test_stack_name';
+
+        frontStack.setStackName(custom_stack_name);
+
+        var data = frontStack.all();
+
+        assert.deepEqual(data, {});
+    });
+
+    /**
+     * Test getting data from stack variable with custom name.
+     */
+    it('Is data', function () {
+        var custom_stack_name = 'test_stack_name';
+        var test_data = {
+            'test_custom_key': '1'
+        };
+
+        frontStack.setStackName(custom_stack_name);
+
+        Object.defineProperty(global, custom_stack_name, {
+            writable: true,
+            value: test_data
+        });
+
+        var data = frontStack.all();
+
+        assert.deepEqual(data, test_data);
+    });
+});
+
 describe('Data access', function () {
 
+    /**
+     * Init data.
+     */
     before(function () {
+        frontStack.setStackName(stack_name);
         Object.defineProperty(global, stack_name, {
             writable: true,
             value: {
@@ -74,6 +115,9 @@ describe('Data access', function () {
         });
     });
 
+    /**
+     * Test getting all data.
+     */
     it('all()', function () {
 
         var all_data = frontStack.all();
@@ -132,7 +176,7 @@ describe('Data access', function () {
             ['test_object_key.test_4', 'value_4', 'Dot-notation']
         ];
 
-        test_data.forEach(function(test_item) {
+        test_data.forEach(function (test_item) {
             assert.strictEqual(frontStack.get(test_item[0]), test_item[1], test_item[2]);
         });
 
@@ -142,12 +186,11 @@ describe('Data access', function () {
         assert.strictEqual(frontStack.get('test_string_key', 'default'), 'test_value', 'Get actual data instead default value');
     });
 
-
     /**
      * Tests checking data not exists.
      */
     it('! get()', function () {
-        not_exists_test_keys.forEach(function(key) {
+        not_exists_test_keys.forEach(function (key) {
             assert.strictEqual(frontStack.get(key), undefined, 'Get by key ' + key + ' is Undefined');
         });
     });
@@ -156,7 +199,7 @@ describe('Data access', function () {
      * Tests default value.
      */
     it('get() default value', function () {
-        not_exists_test_keys.forEach(function(key) {
+        not_exists_test_keys.forEach(function (key) {
 
             var default_value = Math.random();
 

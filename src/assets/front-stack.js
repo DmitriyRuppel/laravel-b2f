@@ -32,9 +32,6 @@
          */
         var instance = null;
 
-        // Object name which use extracting any variables passed from backend.
-        var stack_name = 'backend';
-
         /**
          * Made recursive get of array with dot notation.
          *
@@ -66,6 +63,18 @@
          * @returns {FrontStack}
          */
         var FrontStack = function () {
+
+            // Object name which use extracting any variables passed from backend.
+            var stack_name = 'backend';
+
+            /**
+             * Set custom name of property with data.
+             *
+             * @param custom_stack_name
+             */
+            this.setStackName = function(custom_stack_name) {
+                stack_name = custom_stack_name;
+            };
 
             /**
              * Method get params form backend.

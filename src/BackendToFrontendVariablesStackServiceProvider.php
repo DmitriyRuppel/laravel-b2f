@@ -5,6 +5,7 @@ namespace AvtoDev\BackendToFrontendVariablesStack;
 use Illuminate\Support\ServiceProvider;
 use AvtoDev\BackendToFrontendVariablesStack\Contracts\BackendToFrontendVariablesInterface;
 use AvtoDev\BackendToFrontendVariablesStack\Service\BackendToFrontendVariablesStack;
+use Illuminate\View\Compilers\BladeCompiler;
 
 /**
  * Service registration.
@@ -16,12 +17,33 @@ class BackendToFrontendVariablesStackServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(BladeCompiler $blade)
     {
         $this->initializeConfigs();
         $this->initializeAssets();
 
         $this->registerHelpers();
+
+        /**
+         * Директива для вывода тега установки данных в объект Window.
+         */
+        $blade->directive('back_to_front_data', function ($stack_name) {
+
+            $stack_name = (! empty($stack_name))
+                ? $stack_name
+                : config('back2front.data_name');
+            $stack_name = trim($stack_name, '\'"');
+
+
+            $tag_text = '<script type="text/javascript">' .
+                        'Object.defineProperty(window, "' . $stack_name . '", {' .
+                        'writable: false,' .
+                        ' value: ' . backToFrontStack()->toJson() .
+                        '});' .
+                        '</script>';
+
+            return '<?php echo \'' . $tag_text . '\'; ?>';
+        });
     }
 
     /**
@@ -36,7 +58,6 @@ class BackendToFrontendVariablesStackServiceProvider extends ServiceProvider
             BackendToFrontendVariablesStack::class
         );
     }
-
 
     /**
      * Gets config key name.
@@ -65,7 +86,7 @@ class BackendToFrontendVariablesStackServiceProvider extends ServiceProvider
      */
     protected static function getAssetsDirPath()
     {
-        return __DIR__.'/assets';
+        return __DIR__ . '/assets';
     }
 
     /**

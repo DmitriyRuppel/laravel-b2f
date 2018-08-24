@@ -14,4 +14,9 @@ return [
      * Date format DateTime object conversion
      */
     'date_foramat' => 'Y-m-d H:i:s',
+
+    /**
+     * Property name.
+     */
+    'stack_name' => 'backend',
 ];
