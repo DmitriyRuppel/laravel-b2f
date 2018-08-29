@@ -12,7 +12,7 @@
 [![Downloads count][badge_downloads_count]][link_packagist]
 [![License][badge_license]][link_license]
 
-This package for for sending data from backend to frontend over JS variable.
+Package for sending data from backend to frontend JS variable.
 
 Package a repository of the form "key" => "value" and methods for converting data to array and JSON.
 
@@ -94,6 +94,12 @@ BackendToFrontendVariablesStack object provides the following public methods:
 
 Also you can iterate object.
 
+BackendToFrontendVariablesStack supports dot notation for getting and setting data.
+
+```php
+backToFrontStack()->put('client.');
+```
+
 ### At frontend
 
 For output data at frontend you should add following code in your blade-template (preferably in the section "head" of the resulting HTML document):
@@ -168,9 +174,9 @@ $ composer test
 
 ##### JS testing
 
-For testing JavaScript code using `QUnit` framework.
+For testing JavaScript code using `Mocha` and `Chai` framework.
 
-Open the file `"js-tests/index.html"` in your browser and see tests result.
+Run in console `npm test`. Coverage report will in `coverage/coverage.json` and in `coverage/lcov-report/index.html` for humans.
 
 ## Changes log
 

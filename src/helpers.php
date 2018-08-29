@@ -4,7 +4,7 @@ use AvtoDev\BackendToFrontendVariablesStack\Contracts\BackendToFrontendVariables
 
 if (! function_exists('backToFrontStack')) {
     /**
-     * Возвращает объект стэка для передачи данных от бэка фронту.
+     * Returns service object.
      *
      * @return BackendToFrontendVariablesInterface
      */

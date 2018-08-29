@@ -1,8 +1,8 @@
 <?php
 
-namespace AvtoDev\BackendToFrontendVariablesStack\Tests;
+namespace AvtoDev\BackendToFrontendVariablesStack\Tests\Unit;
 
-use AvtoDev\BackendToFrontendVariablesStack\BackendToFrontendVariablesStackServiceProvider;
+use AvtoDev\BackendToFrontendVariablesStack\Tests\AbstractTestCase;
 
 /**
  * Class BackendToFrontendVariablesStackServiceProviderTest.
@@ -29,7 +29,4 @@ class BackendToFrontendVariablesStackServiceProviderTest extends AbstractTestCas
             $this->assertArrayHasKey($item, $configs);
         }
     }
-
-
-
 }

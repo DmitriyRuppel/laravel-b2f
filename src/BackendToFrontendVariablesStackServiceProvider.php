@@ -20,9 +20,11 @@ class BackendToFrontendVariablesStackServiceProvider extends ServiceProvider
     public function boot(BladeCompiler $blade)
     {
         $this->initializeConfigs();
-        $this->initializeAssets();
 
         $this->registerHelpers();
+
+        $this->initializeAssets();
+        $this->publicationConfigs();
 
         /**
          * Директива для вывода тега установки данных в объект Window.
@@ -105,7 +107,13 @@ class BackendToFrontendVariablesStackServiceProvider extends ServiceProvider
     protected function initializeConfigs()
     {
         $this->mergeConfigFrom(static::getConfigPath(), static::getConfigRootKeyName());
+    }
 
+    /**
+     * Publish configs.
+     */
+    protected function publicationConfigs()
+    {
         $this->publishes([
             \realpath(static::getConfigPath()) => config_path(\basename(static::getConfigPath())),
         ], 'config');

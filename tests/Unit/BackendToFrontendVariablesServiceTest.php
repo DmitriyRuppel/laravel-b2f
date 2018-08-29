@@ -1,7 +1,8 @@
 <?php
 
-namespace AvtoDev\BackendToFrontendVariablesStack\Tests;
+namespace AvtoDev\BackendToFrontendVariablesStack\Tests\Unit;
 
+use AvtoDev\BackendToFrontendVariablesStack\Tests\AbstractTestCase;
 use DateTime;
 use Tarampampam\Wrappers\Json;
 use AvtoDev\BackendToFrontendVariablesStack\Service\BackendToFrontendVariablesStack;

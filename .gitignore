@@ -18,5 +18,6 @@ composer.lock
 /coverage
 /node_modules
 clover-file
+package-lock.json
 .DS_Store
 .php_cs.cache

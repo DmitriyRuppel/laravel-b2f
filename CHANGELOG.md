@@ -4,12 +4,9 @@
 
 ### Added
 
--
-
 ### Changed
-
-- 
 
 ### Removed
 
--
+### Fixed
+

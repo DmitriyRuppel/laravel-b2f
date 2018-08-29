@@ -1,6 +1,6 @@
 <?php
 
-namespace AvtoDev\BackendToFrontendVariablesStack\Tests\Traits;
+namespace AvtoDev\BackendToFrontendVariablesStack\Tests\Unit\Traits;
 
 use Illuminate\Contracts\Console\Kernel;
 
@@ -14,7 +14,7 @@ trait CreatesApplicationTrait
     public function createApplication()
     {
         /** @var \Illuminate\Foundation\Application $app */
-        $app = require __DIR__ . '/../../vendor/laravel/laravel/bootstrap/app.php';
+        $app = require __DIR__ . '/../../../vendor/laravel/laravel/bootstrap/app.php';
 
         // $app->useStoragePath(...);
         // $app->loadEnvironmentFrom(...);
