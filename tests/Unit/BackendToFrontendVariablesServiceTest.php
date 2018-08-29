@@ -4,6 +4,7 @@ namespace AvtoDev\BackendToFrontendVariablesStack\Tests\Unit;
 
 use AvtoDev\BackendToFrontendVariablesStack\Tests\AbstractTestCase;
 use DateTime;
+use Illuminate\Contracts\Support\Arrayable;
 use Tarampampam\Wrappers\Json;
 use AvtoDev\BackendToFrontendVariablesStack\Service\BackendToFrontendVariablesStack;
 use AvtoDev\BackendToFrontendVariablesStack\Contracts\BackendToFrontendVariablesInterface;
@@ -78,7 +79,7 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
     {
         $date_format = 'Y-m-d H:i:s';
 
-        $date_time    = new DateTime('1997-08-29');
+        $date_time = new DateTime('1997-08-29');
 
         $this->service->put('date_time', $date_time);
 
@@ -107,6 +108,30 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
         $result = $this->service->toArray();
 
         $this->assertNull(array_get($result, 'test_deep.' . $test_deep_array_key_path));
+    }
+
+    /**
+     * The toArray method. Arrayable object.
+     *
+     * @covers ::toArray
+     * @covers ::toScalarsRecursive
+     * @covers ::clearNoScalarsFromArrayRecursive
+     */
+    public function testToArrayArrayable()
+    {
+        $arrayable_mock = $this
+            ->getMockBuilder(Arrayable::class)
+            ->getMock();
+
+        $arrayable_mock
+            ->method('toArray')
+            ->willReturn([1, 2, 3]);
+
+        $this->service->put('test_arrayable', $arrayable_mock);
+
+        $result = $this->service->toArray();
+
+        $this->assertEquals([1,2,3], array_get($result, 'test_arrayable'));
     }
 
     /**
