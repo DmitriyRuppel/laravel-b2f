@@ -94,10 +94,20 @@ BackendToFrontendVariablesStack object provides the following public methods:
 
 Also you can iterate object.
 
-BackendToFrontendVariablesStack supports dot notation for getting and setting data.
+BackendToFrontendVariablesStack supports dot notation in "put", "get", "has" and "forget" methods.
 
 ```php
-backToFrontStack()->put('client.');
+backToFrontStack()->put('user.name', 'John Doe');
+```
+
+At frontend will object:
+
+```json
+{
+    "user": {
+        "name": "John Doe"
+    }
+}
 ```
 
 ### At frontend
