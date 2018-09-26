@@ -83,7 +83,7 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
     /**
      * The toArray method. An array of deep nesting.
      *
-     * @covers ::toScalarsRecursive
+     * @covers ::formatDataRecursive
      * @covers ::toArray
      */
     public function testToArrayDeepScalar()
@@ -119,7 +119,7 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
     /**
      * The toArray method. Format the date and time.
      *
-     * @covers ::toScalarsRecursive
+     * @covers ::formatDataRecursive
      * @covers ::toArray
      */
     public function testToArrayDateTime()
@@ -139,7 +139,7 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
      * The toArray method. An array of deep nesting. An object that can not be converted to an array.
      *
      * @covers ::toArray
-     * @covers ::toScalarsRecursive
+     * @covers ::formatDataRecursive
      * @covers ::clearNoScalarsFromArrayRecursive
      */
     public function testToArrayDeepStdObject()
@@ -161,7 +161,7 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
      * The toArray method. Arrayable object.
      *
      * @covers ::toArray
-     * @covers ::toScalarsRecursive
+     * @covers ::formatDataRecursive
      * @covers ::clearNoScalarsFromArrayRecursive
      */
     public function testToArrayArrayable()

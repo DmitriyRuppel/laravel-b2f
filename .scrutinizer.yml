@@ -19,7 +19,9 @@ build:
 
   dependencies:
     before:
-      - npm install -g istanbul mocha chai
+      - npm install istanbul
+      - npm install mocha
+      - npm install chai
 
   tests:
     override:
