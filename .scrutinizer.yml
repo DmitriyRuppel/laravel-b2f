@@ -15,14 +15,7 @@ build_failure_conditions:
 
 build:
   environment:
-    mysql: false
-    postgresql: false
-    mongodb: false
-    elasticsearch: false
-    redis: false
-    memcached: false
-    neo4j: false
-    rabbitmq: false
+
 
   tests:
     override:
@@ -32,10 +25,10 @@ build:
           file: 'clover-file'
           format: 'clover'
       -
-        command: 'istanbul cover _mocha ./js-tests/*-test.js'
+        command: 'istanbul cover --report clover _mocha -- ./js-tests/*-test.js'
         coverage:
-          file: 'coverage.json'
-          format: 'json'
+          file: 'coverage/clover.xml'
+          format: 'clover'
 
   dependencies:
     override:
