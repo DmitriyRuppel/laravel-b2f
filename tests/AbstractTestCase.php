@@ -4,9 +4,9 @@ namespace AvtoDev\BackendToFrontendVariablesStack\Tests;
 
 use AvtoDev\BackendToFrontendVariablesStack\BackendToFrontendVariablesStackServiceProvider;
 use AvtoDev\BackendToFrontendVariablesStack\Tests\Unit\Traits\CreatesApplicationTrait;
-use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase;
 
-abstract class AbstractTestCase extends BaseTestCase
+abstract class AbstractTestCase extends AbstractLaravelTestCase
 {
     use CreatesApplicationTrait;
 

@@ -34,6 +34,53 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
     }
 
     /**
+     * The toArray method.
+     *
+     * @covers ::toArray
+     */
+    public function testToArray()
+    {
+        $test_data = [
+            0           => 123,
+            1           => '345',
+            2           => null,
+            'std_class' => new \stdClass,
+            'string'    => 'test_value',
+            'level1'    => [
+                'level2'   => [
+                    'level3'   => [
+                        'level4' => [
+                            'std_class' => new \stdClass,
+                            'scalar'    => 'test_val',
+                        ],
+                    ],
+                    'test_l_3' => 'test_depth_3',
+                ],
+                'test_l_2' => 'test_depth_2',
+            ],
+        ];
+
+        // Set data
+        $this->service->put('test', $test_data);
+
+        $result = $this->service->toArray();
+        $test_result = $result['test'];
+
+        $this->assertEquals($test_data[0], $test_result[0]);
+        $this->assertEquals($test_data[1], $test_result[1]);
+        $this->assertEquals($test_data['string'], $test_result['string']);
+        $this->assertEquals('test_val', $test_result['level1']['level2']['level3']['level4']['scalar']);
+
+        $this->assertEquals('test_depth_2', $test_result['level1']['test_l_2']);
+        $this->assertEquals('test_depth_3', $test_result['level1']['level2']['test_l_3']);
+
+        $this->assertNull($test_result[2]);
+
+        $this->assertArrayNotHasKey('std_class', $test_result);
+        $this->assertFalse(isset($test_result['level1']['level2']['level3']['level4']['std_class']));
+    }
+
+    /**
      * The toArray method. An array of deep nesting.
      *
      * @covers ::toScalarsRecursive
@@ -131,7 +178,7 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
 
         $result = $this->service->toArray();
 
-        $this->assertEquals([1,2,3], array_get($result, 'test_arrayable'));
+        $this->assertEquals([1, 2, 3], array_get($result, 'test_arrayable'));
     }
 
     /**

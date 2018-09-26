@@ -33,14 +33,14 @@ class BackendToFrontendVariablesStackServiceProvider extends ServiceProvider
 
             $stack_name = (! empty($stack_name))
                 ? $stack_name
-                : config('back2front.data_name');
+                : config('back-to-front.data_name');
             $stack_name = trim($stack_name, '\'"');
 
 
             $tag_text = '<script type="text/javascript">' .
                         'Object.defineProperty(window, "' . $stack_name . '", {' .
                         'writable: false,' .
-                        ' value: ' . backToFrontStack()->toJson() .
+                        ' value: ' . resolve(BackendToFrontendVariablesInterface::class)->toJson() .
                         '});' .
                         '</script>';
 
@@ -78,7 +78,7 @@ class BackendToFrontendVariablesStackServiceProvider extends ServiceProvider
      */
     protected static function getConfigPath()
     {
-        return __DIR__ . '/config/back2front.php';
+        return __DIR__ . '/config/back-to-front.php';
     }
 
     /**
@@ -127,7 +127,7 @@ class BackendToFrontendVariablesStackServiceProvider extends ServiceProvider
     protected function initializeAssets()
     {
         $this->publishes([
-            \realpath(static::getAssetsDirPath()) => public_path('vendor/back2front'),
+            \realpath(static::getAssetsDirPath()) => public_path('vendor/back-to-front'),
         ], 'assets');
     }
 }

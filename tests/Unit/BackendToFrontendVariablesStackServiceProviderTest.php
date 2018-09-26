@@ -14,7 +14,7 @@ class BackendToFrontendVariablesStackServiceProviderTest extends AbstractTestCas
     /**
      * @var string Ключ конфига.
      */
-    protected $config_key = 'back2front';
+    protected $config_key = 'back-to-front';
 
     /**
      * Check config.
