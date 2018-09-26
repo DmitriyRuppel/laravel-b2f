@@ -15,7 +15,11 @@ build_failure_conditions:
 
 build:
   environment:
+    node: '9.4.0'
 
+  dependencies:
+    before:
+      - npm install istanbul mocha chai
 
   tests:
     override:
